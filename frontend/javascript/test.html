@@ -6,89 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>연산자</h1>
+    <h1>강제 자료형 변환</h1>
     <script>
-       console.log(`7 / 5 = ${7 / 5}`);     // 7 / 5 = 1.4
-       console.log(`7 % 5 = ${7 % 5}`);     // 7 % 5 = 2    <= 나머지
+        // 문자열로 변환 => String() 사용
+        console.log(String(52), typeof String(52));         // 52 string
+        console.log(String(true), typeof String(true));     // true string
 
+        // 숫자로 변환 => Number() 사용
+        console.log("52", typeof "52");                     // 52 string
+        console.log(Number("52"), typeof Number("52"));     // 52 'number'
+        console.log(Number(true), typeof Number(true));     // 1 'number'
+        console.log(Number(false), typeof Number(false));   // 0 'number'
+        console.log("숫자", typeof "숫자");                 // 숫자 string
+        console.log(Number("숫자"), typeof Number("숫자")); // NaN 'number' <= 숫자로 변환할 수 없는 문자열인 경우 
 
-       // 나머지 연산의 부호는 왼쪽 피연산자의 부호를 따름
-       console.log(`4 % 3 = ${4 % 3}`);     // 4 % 3 = 1
-       console.log(`4 % -3 = ${4 % -3}`);   // 4 % -3 = 1
-       console.log(`-4 % 3 = ${-4 % 3}`);   // -4 % 3 = -1
-       console.log(`-4 % -3 = ${-4 % -3}`); // -4 % -3 = -1
-       
-       // 문자열 결합
-       console.log("Hello, " + "JavaScript " + "!!!");
+        // 숫자로 변환 가능 여부를 확인
+        console.log(Number("52") == NaN);                   // false
+        console.log(Number("오십이") == NaN);               // false
+        console.log(NaN == NaN);                            // false <= NaN 비교는 무조건 다른 것으로 반환
 
+        console.log(isNaN(Number("52")));                   // false
+        console.log(isNaN(Number("오십이")));               // true
+        console.log(isNaN(NaN));                            // true
 
-       // 문자열의 일부를 선택 => 문자열[인덱스]
-       //               0            1
-       //               01234567 8 9 0 1 2 3456
-       const message = "Hello, 자바스크립트 !!!";
-       console.log(message[0]);             // H
-       console.log(message[7]);             // 자           <= 영문, 한글, 숫자, 공백 모두 한 글자로 취급
-       console.log(message[17]);            // undefined    <= 범위 밖의 경우
-
-
-       // 템플릿 문자열 => ` 기호를 이용해서 생성하고, 내부에 ${표현식}을 사용할 수 있음
-       console.log(`올 해는 ${new Date().getFullYear()}년도 입니다.`);
-
-
-       // postfix 방식 vs prefix 방식
-       let i = 100;
-       console.log(i);      // 100
-       if (i++ > 100) {
-            console.log("i++ > 100");       // 실행되지 않음
-       }
-       console.log(i);      // 101
-
-
-       i = 100;
-       console.log(i);      // 100
-       if (++i > 100) {
-            console.log("++i > 100");       // ++i > 100
-       }
-       console.log(i);      // 101
-
-
-       // 동등 연산자(equality operator) vs 일치 연산자(strict equality operator)
-       let n = 100;
-       let s = "100";
-       console.log(typeof n);       // number
-       console.log(typeof s);       // string
-
-
-       if (n == s) {                // 일치 => 두 변수의 값을 비교 => 동등 연산자
-            console.log("일치");    
-       } else {
-            console.log("불일치");
-       }
-
-
-       if (n === s) {               // 불일치 => 두 변수의 타입과 값을 함께 비교 => 일치 연산자
-            console.log("일치");
-       } else {
-            console.log("불일치");  
-       }
-
-
-       // 삼항 연산자 => 조건식 ? 참(true)인 경우 : 거짓(false)인 경우
-       let x = 100;
-
-
-       // if - else 구문으로 조건식을 구현
-       if (x > 100) {
-            console.log("100 초과");
-       } else {
-            console.log("100 이하");
-       }
-
-
-       // 동일한 로직을 삼항 연산자로 표현
-       x > 100 ? console.log("100 초과") : console.log("100 이하");
-
+        // 불(boolean)로 변환 => Boolean() 사용
+        // 0, ""(빈 문자열), NaN, null, undefined는 false를 반환
+        console.log(0, typeof 0);                           // 0 'number'
+        console.log(Boolean(0), typeof Boolean(0));         // false 'boolean'
+        console.log(Boolean(""), typeof Boolean(""));       // false 'boolean'
+        console.log(Boolean(NaN), typeof Boolean(NaN));     // false 'boolean'
+        console.log(Boolean(null), typeof Boolean(null));   // false 'boolean'
+        console.log(Boolean(undefined), typeof Boolean(undefined));     // false 'boolean'
+        
+        // 그 외의 값들은 모두 true를 반환
+        console.log(Boolean(1), typeof Boolean(1));         // true 'boolean'
+        console.log(Boolean(" "), typeof Boolean(" "));     // true 'boolean'
+        console.log(Boolean(-1), typeof Boolean(-1));       // true 'boolean'
 
     </script>    
 </body>
-</html>
+</html> 
