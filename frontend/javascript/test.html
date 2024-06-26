@@ -6,13 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>함수 선언문</h1>
+    <h1>함수 표현식</h1>
     <script>
-        function add(x, y) {		
-            return x + y; 
-        }
+    let a = 100;
+	let b = a;
+	console.log(a);	// 100
+	console.log(b);	// 100
 
-        console.log(add(10, 20)); 	
+    let add = function (x, y) { return x + y; };
+	let sum = add;
+	console.log(add(10, 20));	// 30		⇐ 함수 변수 이름을 이용해서 호출(실행)
+	console.log(sum(10, 20));	// 30 
+
+
+	let sum1 = function add1(x, y) { return x + y; };
+	let sum2 = sum1;				   
+	console.log(sum1(10, 20));	// 30
+	console.log(sum2(10, 20));	// 30
+	//console.log(add1(10, 20));	// Uncaught ReferenceError: add1 is not defined
+
+    // 함수 선언문
+    function factorial1(n) {
+            if (n <= 1) return 1;           // 재귀호출(문)을 빠져나오는 조건 = Base Case = 귀납 조건	
+            return n * factorial1(n - 1);   // 재귀호출
+        }
+        console.log(factorial1(10));        // 3628800
+
+        // 기명 함수 표현식
+        const myfactorial1 = function factorial2(n) {
+            if (n <= 1) return 1;
+            return n * factorial2(n - 1);   // 재귀호출
+        };
+        const myfactorial2 = myfactorial1;
+        console.log(myfactorial1(10));      // 3628800
+        console.log(myfactorial2(10));      // 3628800
+
     </script>    
 </body>
 </html> 
