@@ -6,43 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>강제 자료형 변환</h1>
+    <h1>자동 자료형 변환</h1>
     <script>
-        // 문자열로 변환 => String() 사용
-        console.log(String(52), typeof String(52));         // 52 string
-        console.log(String(true), typeof String(true));     // true string
+        // 숫자와 문자열에 "+" 연산자를 사용하면 숫자를 문자열로 자동 변환
+        // "+" 연산자는 문자열 결합 연산자로 사용 
+        console.log(10 + 20, typeof(10 + 20));              // 30 'number'
+        console.log("10" + 20, typeof("10" + 20));          // 1020 string
+        console.log(10 + "20", typeof(10 + "20"));          // 1020 string
+        console.log("10" + "20", typeof("10" + "20"));      // 1020 string
 
-        // 숫자로 변환 => Number() 사용
-        console.log("52", typeof "52");                     // 52 string
-        console.log(Number("52"), typeof Number("52"));     // 52 'number'
-        console.log(Number(true), typeof Number(true));     // 1 'number'
-        console.log(Number(false), typeof Number(false));   // 0 'number'
-        console.log("숫자", typeof "숫자");                 // 숫자 string
-        console.log(Number("숫자"), typeof Number("숫자")); // NaN 'number' <= 숫자로 변환할 수 없는 문자열인 경우 
+        // 숫자와 문자열에 "+"가 아닌 다른 연산자를 사용하면 문자열을 숫자로 자동 변환
+        console.log(10 - 20, typeof(10 - 20));              // -10 'number'
+        console.log('10' - 20, typeof('10' - 20));          // -10 'number'
+        console.log(10 - '20', typeof(10 - '20'));          // -10 'number'
+        console.log('10' - '20', typeof('10' - '20'));      // -10 'number'
 
-        // 숫자로 변환 가능 여부를 확인
-        console.log(Number("52") == NaN);                   // false
-        console.log(Number("오십이") == NaN);               // false
-        console.log(NaN == NaN);                            // false <= NaN 비교는 무조건 다른 것으로 반환
+        console.log(10 * '20', typeof(10 * '20'));          // 200 'number'
+        console.log(10 / '20', typeof(10 / '20'));          // 0.5 'number'
+        console.log(10 % '20', typeof(10 % '20'));          // 10 'number'
 
-        console.log(isNaN(Number("52")));                   // false
-        console.log(isNaN(Number("오십이")));               // true
-        console.log(isNaN(NaN));                            // true
+        // 부정 연산자를 두 번 사용하면 Boolean() 함수를 사용하는 것과 동일
+        console.log(Boolean(0), !!0);                       // false false
+        console.log(Boolean(""), !!"");                     // false false
+        console.log(Boolean(NaN), !!NaN);                   // false false
+        console.log(Boolean(null), !!null);                 // false false
+        console.log(Boolean(undefined), !!undefined);       // false false
 
-        // 불(boolean)로 변환 => Boolean() 사용
-        // 0, ""(빈 문자열), NaN, null, undefined는 false를 반환
-        console.log(0, typeof 0);                           // 0 'number'
-        console.log(Boolean(0), typeof Boolean(0));         // false 'boolean'
-        console.log(Boolean(""), typeof Boolean(""));       // false 'boolean'
-        console.log(Boolean(NaN), typeof Boolean(NaN));     // false 'boolean'
-        console.log(Boolean(null), typeof Boolean(null));   // false 'boolean'
-        console.log(Boolean(undefined), typeof Boolean(undefined));     // false 'boolean'
-        
-        // 그 외의 값들은 모두 true를 반환
-        console.log(Boolean(1), typeof Boolean(1));         // true 'boolean'
-        console.log(Boolean(" "), typeof Boolean(" "));     // true 'boolean'
-        console.log(Boolean(-1), typeof Boolean(-1));       // true 'boolean'
-
+        console.log(Boolean(Number('숫자')), !!Number('숫자')); // false false     
+        console.log(Boolean(1), !!1);                       // true true
     </script>    
 </body>
 </html> 
