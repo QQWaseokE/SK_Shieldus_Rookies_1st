@@ -6,45 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>함수 객체</h1>
+    <h1>함수를 다른 함수의 인자로 전달</h1>
     <script>
-        // 객체 선언
-        let obj = {
-            "first name": "홍", 
-            age: 23
+        let click = function(fname) {
+            fname();
         };
 
-        // 객체의 요소(키, 값 쌍)를 참조
-        console.log(obj.age);
-        console.log(obj["age"]);
-        // console.log(obj."first name");   // 불가(띄어쓰기)
-        console.log(obj["first name"]);     // 가능
+        let loginButton = function() {
+            console.log('로그인되었습니다.');
+        };
+        let logoutButton = function() {
+            console.log('로그아웃되었습니다.');
+        };
 
-        // 객체에 새로운 요소를 추가 
-        obj.email = "hong@test.com";
-        obj["last name"] = "길동";
+        click(loginButton);
+        click(logoutButton);
 
-        // 객체 요소의 값을 수정 
-        obj.age = 32;
-        obj["age"] = 42;
-
-        console.log(obj);       // {first name: '홍', age: 42, email: 'hong@test.com', last name: '길동'}
-
-
-        // 함수를 정의
-        function add(x, y) {
-            return x + y;
-        }
-
-        // 함수 호출 
-        console.log(add(10, 20));   // 30
-
-        add.result = add(10, 20);
-        console.log(add.result);    // 30
-        console.log(add.name);      // add
-        console.log(add.length);    // 2
-        
-        console.dir(add);   // 함수 정보
-    </script>    
+    </script>  
+ 
 </body>
 </html> 
