@@ -6,30 +6,89 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>var vs let vs const</h1>
+    <h1>연산자</h1>
     <script>
-        console.log(x1);                // undefined => x1 변수가 호스팅되어 선언된 것으로 처리
-        var x1;
-        console.log(x1);                // undefined
+       console.log(`7 / 5 = ${7 / 5}`);     // 7 / 5 = 1.4
+       console.log(`7 % 5 = ${7 % 5}`);     // 7 % 5 = 2    <= 나머지
 
 
-        x1 = 100;
-        console.log(x1, typeof(x1));    // 100 'number'
+       // 나머지 연산의 부호는 왼쪽 피연산자의 부호를 따름
+       console.log(`4 % 3 = ${4 % 3}`);     // 4 % 3 = 1
+       console.log(`4 % -3 = ${4 % -3}`);   // 4 % -3 = 1
+       console.log(`-4 % 3 = ${-4 % 3}`);   // -4 % 3 = -1
+       console.log(`-4 % -3 = ${-4 % -3}`); // -4 % -3 = -1
+       
+       // 문자열 결합
+       console.log("Hello, " + "JavaScript " + "!!!");
 
 
-        // console.log(x2);             // Uncaught ReferenceError: Cannot access 'x2' before initialization
-        let x2;
-        console.log(x2);                // undefined
+       // 문자열의 일부를 선택 => 문자열[인덱스]
+       //               0            1
+       //               01234567 8 9 0 1 2 3456
+       const message = "Hello, 자바스크립트 !!!";
+       console.log(message[0]);             // H
+       console.log(message[7]);             // 자           <= 영문, 한글, 숫자, 공백 모두 한 글자로 취급
+       console.log(message[17]);            // undefined    <= 범위 밖의 경우
 
 
-        x2 = 200;
-        console.log(x2);                // 200
+       // 템플릿 문자열 => ` 기호를 이용해서 생성하고, 내부에 ${표현식}을 사용할 수 있음
+       console.log(`올 해는 ${new Date().getFullYear()}년도 입니다.`);
 
 
+       // postfix 방식 vs prefix 방식
+       let i = 100;
+       console.log(i);      // 100
+       if (i++ > 100) {
+            console.log("i++ > 100");       // 실행되지 않음
+       }
+       console.log(i);      // 101
 
 
-        const x3 = 100;                 // 상수변수 = 한번 값을 할당하면 변경할 수 없는 변수
-        x3 = 200;                       // Uncaught TypeError: Assignment to constant variable.
+       i = 100;
+       console.log(i);      // 100
+       if (++i > 100) {
+            console.log("++i > 100");       // ++i > 100
+       }
+       console.log(i);      // 101
+
+
+       // 동등 연산자(equality operator) vs 일치 연산자(strict equality operator)
+       let n = 100;
+       let s = "100";
+       console.log(typeof n);       // number
+       console.log(typeof s);       // string
+
+
+       if (n == s) {                // 일치 => 두 변수의 값을 비교 => 동등 연산자
+            console.log("일치");    
+       } else {
+            console.log("불일치");
+       }
+
+
+       if (n === s) {               // 불일치 => 두 변수의 타입과 값을 함께 비교 => 일치 연산자
+            console.log("일치");
+       } else {
+            console.log("불일치");  
+       }
+
+
+       // 삼항 연산자 => 조건식 ? 참(true)인 경우 : 거짓(false)인 경우
+       let x = 100;
+
+
+       // if - else 구문으로 조건식을 구현
+       if (x > 100) {
+            console.log("100 초과");
+       } else {
+            console.log("100 이하");
+       }
+
+
+       // 동일한 로직을 삼항 연산자로 표현
+       x > 100 ? console.log("100 초과") : console.log("100 이하");
+
+
     </script>    
 </body>
 </html>
