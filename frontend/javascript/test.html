@@ -6,71 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>자바스크립트 자료형</h1>
+    <h1>var vs let vs const</h1>
     <script>
-        // Number Type
-        let n1 = 1234;
-        let n2 = 56.78;
-        console.log(n1, typeof(n1));    // 1234 'number'
-        console.log(n2, typeof(n2));    // 56.78 'number'
+        console.log(x1);                // undefined => x1 변수가 호스팅되어 선언된 것으로 처리
+        var x1;
+        console.log(x1);                // undefined
 
 
-        // String Type
-        let s1 = "Hello, 'Inho'";
-        let s2 = 'Hello, "Inho"';
-        console.log(s1);                // Hello, 'Inho'
-        console.log(s2);                // Hello, "Inho"
+        x1 = 100;
+        console.log(x1, typeof(x1));    // 100 'number'
 
 
-        // 이스케이프 처리
-        let s3 = "Hello, \"Inho\"";
-        let s4 = 'Hello, \'Inho\'';
-        console.log(s3);                // Hello, "Inho"
-        console.log(s4);                // Hello, 'Inho'
+        // console.log(x2);             // Uncaught ReferenceError: Cannot access 'x2' before initialization
+        let x2;
+        console.log(x2);                // undefined
 
 
-        // 템플릿 문자열
-        // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals
-        let name = '홍길동';
-        let age = 23;
-        let hello = '이름은 "'+name+'"이고, 올해 나이는 '+age+'살이고, 내년에는 '+(age+1)+'살이 됩니다.';
-        console.log(hello);
-        let hello2 = `이름은 "${name}"이고, 올해 나이는 ${age}살이고, 내년에는 ${age+1}살이 됩니다.`;
-        console.log(hello2);
+        x2 = 200;
+        console.log(x2);                // 200
 
 
-        // Boolean Type
-        let b1 = true;
-        let b2 = false;
-        console.log(b1, typeof(b1));    // true boolean
-        console.log(b2, typeof(b2));    // false boolean
 
 
-        // Null Type
-        let n = null;
-        console.log(n, typeof(n));      // null 'object'
-
-
-        // Undefined Type = 변수가 선언만 되고 값이 정의되지 않은 상태
-        let u1;
-        let u2 = undefined;
-        console.log(u1, typeof(u1));    // undefined 'undefined'
-        console.log(u2, typeof(u2));    // undefined 'undefined'
-
-
-        // Array Type = 다양한 데이터 타입을 순서대로 모아놓은 것
-        let arr1 = [1, 2, 3, 4];
-        let arr2 = [1, 2.2, "abc", null, undefined, [7, 8, 9]];
-        console.log(arr1, typeof(arr1));    // [1, 2, 3, 4] 'object'
-        console.log(arr2, typeof(arr2));    // [1, 2.2, "abc", null, undefined, Array(3)] 'object'
-
-
-        // Object Type = 이름(key or name)과 값(value)으로 이루어진 쌍의 집합으로, 
-        //               이름은 문자열이어야 하며, 값은 어떤 데이터 타입도 올 수 있음
-        let obj1 = {a: "apple", b: "banana", c: "carrot"};
-        let obj2 = {name: "홍길동", age: 23, "favorite colors": ["red", "brown", "blue"]};
-        console.log(obj1, typeof(obj1));    // {a: 'apple', b: 'banana', c: 'carrot'} 'object'
-        console.log(obj2, typeof(obj2));    // {name: '홍길동', age: 23, favorite colors: Array(3)} 'object'
+        const x3 = 100;                 // 상수변수 = 한번 값을 할당하면 변경할 수 없는 변수
+        x3 = 200;                       // Uncaught TypeError: Assignment to constant variable.
     </script>    
 </body>
 </html>
