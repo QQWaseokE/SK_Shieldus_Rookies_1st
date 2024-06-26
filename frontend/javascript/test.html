@@ -6,22 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>함수를 다른 함수의 인자로 전달</h1>
+    <h1>함수를 다른 함수의 리턴값(반환)으로 활용</h1>
     <script>
-        let click = function(fname) {
-            fname();
+        let foo = function() {
+            return function() {
+                console.log('반환함수');
+            };
         };
 
-        let loginButton = function() {
-            console.log('로그인되었습니다.');
-        };
-        let logoutButton = function() {
-            console.log('로그아웃되었습니다.');
-        };
-
-        click(loginButton);
-        click(logoutButton);
-
+        let bar = foo();
+        bar();
     </script>  
  
 </body>
