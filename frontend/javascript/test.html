@@ -6,16 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>함수를 다른 함수의 리턴값(반환)으로 활용</h1>
+    <h1>즉시 실행 함수 = 자기 호출 함수</h1>
     <script>
-        let foo = function() {
-            return function() {
-                console.log('반환함수');
-            };
-        };
-
-        let bar = foo();
-        bar();
+        (function (name) { console.log(name + '는 즉시 실행됩니다.'); })('이 함수');
     </script>  
  
 </body>
