@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* 일반 형제 선택자 => h1 태그 뒤에 위치한 모든 h2 태그의 배경색을 노란색으로 설정 */
-        h1 ~ h2 { background-color: yellow; }
-
-        /* 인접 형제 선택자 => h1 태그 뒤에 위치한 첫번째 h2 태그의 글자색을 붉은색으로 설정 */ 
-        h1 + h2 { color: red; }
+       a { display: block; }
+       /* 링크의 주소가 https로 시작하는 경우 배경색을 파란색으로 설정 */
+       a[href^="https"] { background-color: blue; }
+       /* 링크의 주소가 pdf로 끝나는 경우 배경색을 초록색으로 설정 */
+       a[href$="pdf"] { background-color: green; }
+       /* 링크의 주소가 my 글자를 포함하고 있는 경우 글자색을 붉은색으로 설정 */
+       a[href*="my"] { color: red; }
     </style>     
 </head>
 <body>
 
-    <h1>part 1</h1>
-    <h2>chap 1</h2>
-    <h2>chap 2</h2>
-    <h2>chap 3</h2>
-    <h2>chap 4</h2>
+    <a href="https://www.naver.com">네이버로 이동</a>
+    <a href="http://www.example.com/myfile.pdf">PDF 파일 다운로드</a>
+    <a href="/data/myphoto.gif">이미지 다운로드</a>
 
 </body>
 </html>
