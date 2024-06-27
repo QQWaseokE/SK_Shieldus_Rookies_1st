@@ -5,27 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        p { background-color: yellow; }
-        div p { color: red; }
-     </style>     
+        /* section 아래의 모든 p 태그의 글자색을 파란색으로 표시 */
+        section p { color: blue; }
+
+        /* section 바로 아래의 모든 p 태그의 배경색을 노란색으로 표시 */
+        section > p { background-color: yellow; }
+    </style>     
 </head>
 <body>
 
-    <p id="first"> 
-        첫번째 P 태그 
-        <p> 자식 P 태그 </p>
-        <p> 자식 P 태그 </p>
-        <div> 자식 DIV 태그</div>
-        <div> 자식 DIV 태그</div>
-    </p>
-    
-    <div class="myclass"> 
-        첫번째 DIV 태그 
-        <p> 자식 P 태그 </p>
-        <p> 자식 P 태그 </p>
-        <div> 자식 DIV 태그</div>
-        <div> 자식 DIV 태그</div>
-    </div>
+    <section>
+		<p>첫번째 섹션</p>
+		<div>
+			<p>첫번째 섹션의 내용1</p>
+			<p>첫번째 섹션의 내용2</p>
+		</div>
+	</section>
+	<section>
+		<p>두번째 섹션</p>
+		<div>
+			<p>두번째 섹션의 내용1</p>
+			<p>두번째 섹션의 내용2</p>
+		</div>
+	</section>
+	<section>
+		<p>세번째 섹션</p>
+		<p>세번째 섹션</p>
+		<div>
+			<p>세번째 섹션의 내용1</p>
+			<p>세번째 섹션의 내용2</p>
+		</div>
+	</section>
+
 
 </body>
 </html>
