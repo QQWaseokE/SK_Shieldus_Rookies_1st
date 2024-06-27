@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       .box1, .box2, .box3, .box4 {
-            box-sizing: border-box;
+        div[class^="box"] { 
+            box-sizing: border-box; 
+        }
+        .box1, .box2, .box3, .box4 {
+            /* box-sizing: border-box; */
             height: 100px;
             border: 3px solid blue;
             background-color: aliceblue;
-       }
+        }
+        .boxA { 
+            border: 3px solid green;
+        }
+        .box2, .box3 {  
+            width: 50%;
+            float: left;    /* boxA의 높이가 0이 되는 문제가 발생 */
+        }
+        /* 클리어 픽스 */
+        .boxA:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
     </style>     
 </head>
 <body>
     <div class="box1">BOX1</div>
-    <div class="box2">BOX2</div>
-    <div class="box3">BOX3</div>
+    <div class="boxA">
+        <div class="box2">BOX2</div>
+        <div class="box3">BOX3</div>
+    </div>
     <div class="box4">BOX4</div>
 </body>
 </html>
