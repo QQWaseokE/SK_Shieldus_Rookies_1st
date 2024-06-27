@@ -17,24 +17,12 @@
         .boxA { 
             border: 3px solid green;
         }
-        .boxB { 
-            border: 3px solid green;
-        }
-        .box1, .box2 {  
-            width: calc(100%/2);
+        .box1, .box2, .box3 {  
+            width: calc(100%/3);
             float: left;    /* boxA의 높이가 0이 되는 문제가 발생 */
-        }
-        .box3, .box4 {  
-            width: calc(100%/2);
-            float: left;    /* boxB의 높이가 0이 되는 문제가 발생 */
         }
         /* 클리어 픽스 */
         .boxA:after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-        .boxB:after {
             content: "";
             display: block;
             clear: both;
@@ -45,11 +33,10 @@
     <div class="boxA">
         <div class="box1">BOX1</div>
         <div class="box2">BOX2</div>
+        <div class="box3">BOX3</div>
     </div>
     
-    <div class="boxB">
-        <div class="box3">BOX3</div>
-        <div class="box4">BOX4</div>
-    </div>
+    <div class="box4">BOX4</div>
+    
 </body>
 </html>
