@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /*
-        .myclass { color: yellow; }
-        #first { color: red; }
-        */
-        p[class="myclass"] { color: yellow; }
-        div[id="first"] { color: red; }
-    </style>     
+        p { background-color: yellow; }
+        div p { color: red; }
+     </style>     
 </head>
 <body>
 
-    <p id="first"> 첫번째 P 태그 </p>
-    <p class="myclass"> 두번째 P 태그 </p>
-
-    <div class="myclass"> 첫번째 DIV 태그 </div>
-    <div id="first"> 두번째 DIV 태그 </div>
+    <p id="first"> 
+        첫번째 P 태그 
+        <p> 자식 P 태그 </p>
+        <p> 자식 P 태그 </p>
+        <div> 자식 DIV 태그</div>
+        <div> 자식 DIV 태그</div>
+    </p>
+    
+    <div class="myclass"> 
+        첫번째 DIV 태그 
+        <p> 자식 P 태그 </p>
+        <p> 자식 P 태그 </p>
+        <div> 자식 DIV 태그</div>
+        <div> 자식 DIV 태그</div>
+    </div>
 
 </body>
 </html>
