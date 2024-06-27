@@ -6,12 +6,15 @@
     <title>Document</title>
     <style>
        a { display: block; }
-       /* 링크의 주소가 https로 시작하는 경우 배경색을 파란색으로 설정 */
-       a[href^="https"] { background-color: blue; }
-       /* 링크의 주소가 pdf로 끝나는 경우 배경색을 초록색으로 설정 */
-       a[href$="pdf"] { background-color: green; }
-       /* 링크의 주소가 my 글자를 포함하고 있는 경우 글자색을 붉은색으로 설정 */
-       a[href*="my"] { color: red; }
+       /* 링크의 주소가 https로 시작하는 a 태그에 마우스가 올라가면 글자 크기를 두 배 크게 설정 */
+       a[href^="https"]:hover { font-size: 2em; }
+       /* 
+        홀수번째 a 태그의 배경색을 노란색으로 설정 
+        홀수 => odd => 2n+1
+        짝수 => even => 2n
+       */
+       a:nth-child(2n+1) { background-color: yellow; }
+       a:nth-child(2n) { background-color: green; }
     </style>     
 </head>
 <body>
