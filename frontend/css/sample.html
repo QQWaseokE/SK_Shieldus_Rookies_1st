@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       a { display: block; }
-       /* 링크의 주소가 https로 시작하는 a 태그에 마우스가 올라가면 글자 크기를 두 배 크게 설정 */
-       a[href^="https"]:hover { font-size: 2em; }
-       /* 
-        홀수번째 a 태그의 배경색을 노란색으로 설정 
-        홀수 => odd => 2n+1
-        짝수 => even => 2n
-       */
-       a:nth-child(2n+1) { background-color: yellow; }
-       a:nth-child(2n) { background-color: green; }
+       p::first-letter { font-size: 2em; }
+       p::after {
+        content: "(후렴)무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세";
+       }
     </style>     
 </head>
 <body>
 
-    <a href="https://www.naver.com">네이버로 이동</a>
-    <a href="http://www.example.com/myfile.pdf">PDF 파일 다운로드</a>
-    <a href="/data/myphoto.gif">이미지 다운로드</a>
+    <p> 
+        동해물과 백두산이 마르고 닳도록
+        하느님이 보우하사 우리나라만세
+    </p>
+    <p>
+        남산위에 저 소나무 철갑을 두른듯
+        바람서리 불변함은 우리기상 일세
+    </p>
+    <p>
+        가을하늘 공활한데 높고 구름없이 
+        밝은달은 우리가슴 일편단심일세
+    </p>
+    <p>
+        이 기상과 이 맘으로 충성을 다하여
+        괴로우나 즐거우나 나라사랑하세
+    </p>
 
 </body>
 </html>
