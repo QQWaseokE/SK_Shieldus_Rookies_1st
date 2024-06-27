@@ -5,38 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* section 아래의 모든 p 태그의 글자색을 파란색으로 표시 */
-        section p { color: blue; }
+        /* 일반 형제 선택자 => h1 태그 뒤에 위치한 모든 h2 태그의 배경색을 노란색으로 설정 */
+        h1 ~ h2 { background-color: yellow; }
 
-        /* section 바로 아래의 모든 p 태그의 배경색을 노란색으로 표시 */
-        section > p { background-color: yellow; }
+        /* 인접 형제 선택자 => h1 태그 뒤에 위치한 첫번째 h2 태그의 글자색을 붉은색으로 설정 */ 
+        h1 + h2 { color: red; }
     </style>     
 </head>
 <body>
 
-    <section>
-		<p>첫번째 섹션</p>
-		<div>
-			<p>첫번째 섹션의 내용1</p>
-			<p>첫번째 섹션의 내용2</p>
-		</div>
-	</section>
-	<section>
-		<p>두번째 섹션</p>
-		<div>
-			<p>두번째 섹션의 내용1</p>
-			<p>두번째 섹션의 내용2</p>
-		</div>
-	</section>
-	<section>
-		<p>세번째 섹션</p>
-		<p>세번째 섹션</p>
-		<div>
-			<p>세번째 섹션의 내용1</p>
-			<p>세번째 섹션의 내용2</p>
-		</div>
-	</section>
-
+    <h1>part 1</h1>
+    <h2>chap 1</h2>
+    <h2>chap 2</h2>
+    <h2>chap 3</h2>
+    <h2>chap 4</h2>
 
 </body>
 </html>
