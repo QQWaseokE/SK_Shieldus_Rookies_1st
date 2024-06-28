@@ -1,87 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>배열</h1>
+    <h1>reduce() 메소드</h1>
     <script>
-        // 배열 선언
-        let values = [ "빨강", '노랑', `파랑`, true, 20 ];
+        const numbers = [1, 2, 3, 4, 5];
 
-        console.dir(values);
-
-        // 배열 길이는 배열 객체의 length 속성(property)을 이용해서 확인이 가능 
-        console.log(values.length);         // 5    
-        console.log(values["length"]);      // 5
-
-        // 배열 데이터를 추가
-        values.push("new데이터");                       // lenth = 6
-        values[values.length] = "또new데이터";          // lenth = 7
-        values[values.length+10] = "또또new데이터";     // 이 때 인덱스를 건너뛰고 값 입력됨
-
-        // 배열 요소에 접근할 때는 일반적으로 배열의 인덱스를 사용
-        console.log('첫번째', values[0]);   
-        console.log('마지막', values[values.length-1]);
-
-        // 모든 배열 요소에 순차적으로 접근하는 방법
-        console.log('방법1. -----------------');
-        console.log(values[0]);
-        console.log(values[1]);
-        console.log(values[2]);
-        console.log(values[3]);
-        console.log(values[4]);
-        console.log(values[5]);
-        console.log(values[17]);
-
-        console.log('방법2. -----------------');
-        for (let i = 0; i < values.length; i++) {
-            console.log(values[i]);
+        // 배열 데이터의 합
+        {
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++)
+                sum = sum + numbers[i];
+            console.log(sum);           // 15
+        }
+        {
+            let sum = numbers.reduce((a, c) => {
+                console.log({ a, c });
+                return a + c;
+            });
+            console.log(sum);
         }
 
-        console.log('방법3. -----------------');
-        for (let idx in values) {           // 개별 배열 요소의 인덱스를 반환
-            console.log(values[idx]);
+        // numbers 배열의 각 항목의 값에 13을 곱한 결과 중 짝수의 합을 구하시오.
+        {
+            console.log(numbers
+                .map(v => v * 13)
+                .filter(v => v % 2 == 0)
+                .reduce((a, c) => a + c));
         }
-
-        console.log('방법4. -----------------');
-        for (let value of values) {         // 개별 배열 요소의 값을 반환
-            console.log(value);
-        }
-
-        console.log('방법5-1. -----------------');
-        // forEach() 함수 = 배열을 순회해서 각 요소를 콜백 함수로 처리하기 위한 함수, 배열의 각 요소에 대해 주어진 콜백 함수를 적용해서 순서대로 한 번씩 실행
-
-        const printData = function(color) { // 개별 배열 요소를 순차적으로 가져와서 callback 함수로 전달
-            console.log(color);             // 매개 변수가 하나이면 개별 배열 요소의 값이 전달
-        };
-        values.forEach(printData);          // 함수 변수를 forEach 함수로 전달
-
-        const printDataAndIndex = function(color, index) { 
-            console.log(index, color);      // 매개 변수가 두 개 이면 개별 배열 요소의 값과 인덱스가 전달
-        };
-        values.forEach(printDataAndIndex);
-
-        // 이런 방식
-        // i = 1
-        // function(i)
-
-        console.log('방법5-2. -----------------');
-        values.forEach(function(color) {    // forEach 함수에 직접 callback 함수를 정의해서 전달  
-            console.log(color);             
-        });
-        values.forEach(function(color, index) { 
-            console.log(index, color);      
-        });
-
-        // 이런 방식
-        // function(1)
-
-        console.log('방법5-3. -----------------');  // callback 함수를 화살표 함수로 정의해서 전달
-        values.forEach(color => console.log(color));
-        values.forEach((color, index) => console.log(index, color));
-</script>    
+    </script>
 </body>
-</html> 
+
+</html>
