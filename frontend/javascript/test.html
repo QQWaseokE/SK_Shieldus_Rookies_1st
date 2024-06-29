@@ -1,105 +1,30 @@
 <!doctype html>
 <html lang="ko">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+   
 </head>
 <body>
-	<h1>객체</h1>
+    <h1>객체와 배열을 이용한 데이터 처리</h1>
     <script>
-        // 객체 선언
-        let person = {
-            "name": '홍길동', 
-            'age': 23, 
-            isMarried: false, 
-            'favorite colors': ['빨강', '파랑'], 
-            // 객체 내의 다른 요소의 값을 가져올 때는 this.을 사용
-            hello: function() {
-                return `안녕, 나는 '${this.name}'이야`;     
-            }
-        };
-
-        // 객체 속성을 참조할 때는 객체변수.속성이름(키) 또는 객체변수["속성이름"] 형식을 이용
-        console.log(person.name);
-        console.log(person["name"]);
-        console.log(person["favorite colors"]);
-        console.log(person.hello());
-
-        // 객체 속성의 값을 변경
-        person.name = "고길동";
-        console.log(person.name);
-        console.log(person.hello());
-
-        // 객체 속성을 추가
-        person.email = 'gildong@test.com';
-        person["address"] = '서울시 도봉구 쌍문동';
-        console.log(person);
-
-        // 객체의 속성을 순회하면서 가져오는 방법 
-        console.log("#1 for-in 구문을 이용 -------------------");
-        for (let key in person) {
-            console.log(`person["${key}""] => ${person[key]}`);
-        }
-
-        console.log("-------------------");
-        // Uncaught TypeError: person is not iterable
-        /*
-        for (let value of person) {             // for of 구문은 사용 불가
-            console.log(value);
-        }
-        */                                      
-
-        console.log("#2-1 forEach 구문을 이용 -------------------");
-        /*
-        person.forEach(function(key) {
-            console.log(`person["${key}""] => ${person[key]}`)
-        });
+        //  학생별 점수를 아래 형식에 맞춰서 콘솔에 출력
+       
+        let scores = [];
+        /*  ### 학생별 점수 데이터
+            0: {name: '홍길동', korean: 80, math: 90, english: 90}
+            1: {name: '고길동', korean: 90, math: 80, english: 80}
+            2: {name: '신길동', korean: 70, math: 80, english: 70}
+       
+            ### 출력 형식
+            ----------- --------- --------- --------- --------- ---------
+            학생이름     국어      영어      수학      합계      평균
+            ----------- --------- --------- --------- --------- ---------
+            홍길동       80        90        90        260       86.7
+              :          :         :         :          :        :
         */
-        // Object.keys() : 객체의 키를 배열로 반환하는 함수
-        console.log(Object.keys(person));
-        Object.keys(person).forEach(function(key) {             // 기본형 : .forEach(funciont())
-            console.log(`person["${key}""] => ${person[key]}`);
-        });
-
-        console.log("#2-2 콜백 함수를 화살표 함수로 표현 -------------------");
-        Object.keys(person).forEach(key => console.log(`person["${key}""] => ${person[key]}`));
-
-
-
-        // in 연산자 - 객체에 명시한 속성이 존재하는지 여부를 확인
-        // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/in
-        console.log(`person 객체에 email 속성이 ${"email" in person ? "존재함" : "존재하지 않음"}`);
-        console.log(`person 객체에 message 속성이 ${"message" in person ? "존재함" : "존재하지 않음"}`);
-
-        // with 문 - 사용할 객체를 지정 → 객체명을 반복적으로 작성하지 않도록 도와줌
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/with
-        console.log(`name: ${person.name}`);
-        console.log(`age: ${person.age}`);
-        console.log(`email: ${person.email}`);
-        with(person) {
-            console.log(`name: ${name}`);
-            console.log(`age: ${age}`);
-            console.log(`email: ${email}`);
-        }
-
-
-        // person 객체가 가지고 있는 모든 속성과 속성 값을 출력하는 print라는 이름의 함수를 person 객체에 추가
-        person.print = function() {                         // 이 경우 print 함수가 person 객체에 추가 되므로
-            console.log("---------------");
-            for (key in person) {
-                if (key === 'print') continue;              // 이 것으로 print 함수는 출력에서 제외
-                console.log(`${key} : ${person[key]}`);
-            }
-        };
-        person.print();
-
-        // 객체의 속성을 삭제
-        delete person.email;
-        delete person["favorite colors"];
-        person.print();
-
-
+       
+       
     </script>
 </body>
 </html>
