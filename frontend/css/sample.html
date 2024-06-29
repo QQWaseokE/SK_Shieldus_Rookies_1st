@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <style>
+        /*기본적으로 적용되는 박스 형식*/
         div[class^="box"] { box-sizing: border-box; }
         .box1, .box2, .box3, .box4 {
             height: 100px;
@@ -14,12 +15,14 @@
         .box2 { float: left; width: 20%; }
         .box3 { float: left; width: 60%; }
         */
-        .boxB { float: left; width: 80%; border: 3px solid green; }
-        .box2 { float: right; width: 75%; }					⇐ boxB 내에서 75%를 차지하고 오른쪽에 배치
-        .box3 { float: left; width: 25%; }					⇐ boxB 내에서 25%를 차지하고 왼쪽에 배치
-        .boxB:after { content: ''; display: block; clear: both; }	⇐ 클리어 픽스
-        .box4 { float: left; width: 20%; }
-        .boxA:after { content: ''; display: block; clear: both; }
+        @media screen and (min-width: 768px) {
+            .boxB { float: left; width: 80%; border: 3px solid green; }
+            .box2 { float: right; width: 75%; }
+            .box3 { float: left; width: 25%; }
+            .boxB:after { content: ''; display: block; clear: both; }
+            .box4 { float: left; width: 20%; }
+            .boxA:after { content: ''; display: block; clear: both; }
+        }
     </style>
 </head>
 <body>
