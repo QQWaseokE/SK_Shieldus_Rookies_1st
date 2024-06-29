@@ -1,51 +1,61 @@
 <!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-   
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    
 </head>
 <body>
-    <h1>객체와 배열을 이용한 데이터 처리</h1>
+    <h1>단축 속성명</h1>
     <script>
-        // 서버와 통신을 통해서 데이터를 가져오는 경우
-        const dataFromServer = `[{"name": "홍길동", "korean": 80, "math": 90, "english": 90},{"name": "고길동", "korean": 90, "math": 80, "english": 80},{"name": "신길동", "korean": 70, "math": 80, "english": 70}]`;
-        console.log('서버로부터 받아온 데이터가 문자열 형태인 경우')
-        console.log(dataFromServer);
+        let name = "John";
+
+        const person1 = {
+            name: name, 
+            getName: function getName() {
+                return this.name;
+            }
+        };
+        console.log(person1);
+        console.log(person1.name);
+        console.log(person1.getName());
+
+        const person2 = {
+            name,			// 속성 이름을 생략 ← 속성 이름과 속성 값을 가지고 있는 변수 이름이 동일한 경우 
+            getName() {		//                  ← 속성 이름과 함수(메서드) 이름이 동일한 경우 function 키워드와 함께 속성 이름을 생략
+                return this.name;
+            }
+        };
+        console.log(person2);
+        console.log(person2.name);
+        console.log(person2.getName());
 
 
-        console.log('JSON 형식으로 변경');
-        let scores = JSON.parse(dataFromServer);
-        console.log(scores);
-     
-       
-        // 헤더(타이틀)를 출력
-        console.log(`--------\t----\t----\t----\t----\t----`);
-        console.log(`학생이름\t국어\t영어\t수학\t합계\t평균`);
-        console.log(`--------\t----\t----\t----\t----\t----`);
+
+        // 사용 예 1
+        // 매개 변수를 객체로 반환하는 함수를 정의하는 경우
+        function returnObject1(age, name) {
+            return { age: age, name: name };
+        }
+        console.log(returnObject1(23, '홍길동'));   // {age: 23, name: '홍길동'}
+
+        function returnObject2(age, name) {
+            return { age, name };
+        }
+        console.log(returnObject2(23, '홍길동'));   // {age: 23, name: '홍길동'}
 
 
-        // 학생별 점수를 출력
-        scores.forEach(score => {
-            // 합계와 평균을 구하는 함수를 학생 객체 추가
-            score.total = function() {
-                return this.korean + this.english + this.math;
-            };
-            score.average = function() {
-                let result = this.total() / 3;
-                // 소수점 둘째 자리에서 반올림해서 반환
-                return Math.round(result * 10) / 10;
-            };
+        // 사용 예 2
+        // 로그를 출력할 때
+        const email = 'go-gildong@test.com';
+        const address = '서울시 도봉구 쌍문동';
 
-
-            // 학생 객체의 내용(이름, 과목별 점수)을 출력
-            console.log(`${score.name}\t\t${score.korean}\t\t${score.english}\t\t${score.math}\t\t${score.total()}\t\t${score.average()}`);
-        });
-
-
-        // 풋터 출력
-        console.log(`--------\t----\t----\t----\t----\t----`);
-
+        // 변수의 값을 로그로 출력하는 다양한 방법
+        console.log("email", email);        
+        console.log("address", address);    
+        console.log(`email : ${email}, address : ${address}`);  
+        console.log({ email: email, address: address });        
+        console.log({ email, address });                        
 
     </script>
 </body>
