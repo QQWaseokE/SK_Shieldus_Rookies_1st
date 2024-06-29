@@ -14,6 +14,16 @@
         .box2 { float: left; width: 20%; }
         .box3 { float: left; width: 60%; }
         */
+
+        @media screen and (min-width: 600px) and (max-width: 767px) {
+            .boxB { /* float: left; width: 80%; */ border: 3px solid green; } 
+            .box2 { float: right; width: 75%; }
+            .box3 { float: left; width: 25%; }
+            .boxB:after { content: ''; display: block; clear: both; }
+            /* .box4 { float: left; width: 20%; } */
+            .boxA:after { content: ''; display: block; clear: both; }
+        }
+        
         @media screen and (min-width: 768px) {
             .boxB { float: left; width: 80%; border: 3px solid green; }
             .box2 { float: right; width: 75%; }
@@ -22,14 +32,6 @@
             .box4 { float: left; width: 20%; }
             .boxA:after { content: ''; display: block; clear: both; }
         }
-
-        /* boxB와 box4가 나란이 배치되도록 하는 스타일을 삭제 */
-        .boxB { /* float: left; width: 80%; */ border: 3px solid green; } 
-        .box2 { float: right; width: 75%; }
-        .box3 { float: left; width: 25%; }
-        .boxB:after { content: ''; display: block; clear: both; }
-        /* .box4 { float: left; width: 20%; } */
-        .boxA:after { content: ''; display: block; clear: both; }
 
     </style>
 </head>
@@ -42,6 +44,5 @@
         </div>
         <div class="box4">BOX4</div>
     </div>
-
 </body>
 </html>
