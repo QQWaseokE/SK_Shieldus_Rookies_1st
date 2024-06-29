@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <style>
-        div[class^="box"] { 
-            box-sizing: border-box; 
-        }
-        .box1, .box2, .box3, .box4 {
-            /* box-sizing: border-box; */
+        div[class^="box"] { box-sizing: border-box; }
+        .box1, .box2, .box3 {
             height: 100px;
-            border: 3px solid blue;
-            background-color: aliceblue;
+            border: 3px solid blue; background: aliceblue;
         }
-        .boxA { 
-            border: 3px solid green;
-        }
-        .box1, .box2, .box3, .box4 {  
-            width: calc(100%/4);
-            float: left;    /* boxA의 높이가 0이 되는 문제가 발생 */
-        }
-        /* 클리어 픽스 */
-        .boxA:after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-    </style>     
+    </style>
 </head>
 <body>
-    <div class="boxA">
-        <div class="box1">BOX1</div>
-        <div class="box2">BOX2</div>
+    <div class="box1">BOX1</div>
+    <div class="boxA">			                
+        <div class="box2">BOX2</div>		   
         <div class="box3">BOX3</div>
-        <div class="box4">BOX4</div>
     </div>
-    
 </body>
 </html>
