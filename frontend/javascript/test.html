@@ -6,56 +6,31 @@
     
 </head>
 <body>
-    <h1>단축 속성명</h1>
+    <h1>계산된 속성명</h1>
     <script>
-        let name = "John";
-
-        const person1 = {
-            name: name, 
-            getName: function getName() {
-                return this.name;
-            }
-        };
-        console.log(person1);
-        console.log(person1.name);
-        console.log(person1.getName());
-
-        const person2 = {
-            name,			// 속성 이름을 생략 ← 속성 이름과 속성 값을 가지고 있는 변수 이름이 동일한 경우 
-            getName() {		//                  ← 속성 이름과 함수(메서드) 이름이 동일한 경우 function 키워드와 함께 속성 이름을 생략
-                return this.name;
-            }
-        };
-        console.log(person2);
-        console.log(person2.name);
-        console.log(person2.getName());
+        // 속성 이름(key)과 값(value)를 전달받아 객체를 반환하는 함수를 정의
+        function returnObject1(key, value) {
+            /*
+            const obj = {};
+            obj[key] = value;
+            return obj;
+            */
+            return { [key] : value };
+        }    
+        console.log(returnObject1('name', 'John'));   // {name: 'John'}
 
 
-
-        // 사용 예 1
-        // 매개 변수를 객체로 반환하는 함수를 정의하는 경우
-        function returnObject1(age, name) {
-            return { age: age, name: name };
+        // 속성 이름이 일련번호 형태를 가지는 객체를 반환하는 함수
+        function returnObject2(key, value, no) {
+            /*
+            const obj = {};
+            obj[key+no] = value;
+            return obj;
+            */
+            return { [key+no] : value };
         }
-        console.log(returnObject1(23, '홍길동'));   // {age: 23, name: '홍길동'}
-
-        function returnObject2(age, name) {
-            return { age, name };
-        }
-        console.log(returnObject2(23, '홍길동'));   // {age: 23, name: '홍길동'}
-
-
-        // 사용 예 2
-        // 로그를 출력할 때
-        const email = 'go-gildong@test.com';
-        const address = '서울시 도봉구 쌍문동';
-
-        // 변수의 값을 로그로 출력하는 다양한 방법
-        console.log("email", email);        
-        console.log("address", address);    
-        console.log(`email : ${email}, address : ${address}`);  
-        console.log({ email: email, address: address });        
-        console.log({ email, address });                        
+        console.log(returnObject2('name', 'John', 1));   // {name1: 'John'}
+        console.log(returnObject2('name', 'Mike', 2));   // {name2: 'Mike'}
 
     </script>
 </body>
