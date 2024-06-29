@@ -8,20 +8,17 @@
 <body>
     <h1>객체와 배열을 이용한 데이터 처리</h1>
     <script>
-        let scores = [];
-     
-        // scores 배열에 데이터를 추가
-        /*
-        scores[0] = {name: '홍길동', korean: 80, math: 90, english: 90};
-        scores[1] = {name: '고길동', korean: 90, math: 80, english: 80};
-        scores[2] = {name: '신길동', korean: 70, math: 80, english: 70};
-        */
-        scores.push({name: '홍길동', korean: 80, math: 90, english: 90});
-        scores.push({name: '고길동', korean: 90, math: 80, english: 80});
-        scores.push({name: '신길동', korean: 70, math: 80, english: 70});
+        // 서버와 통신을 통해서 데이터를 가져오는 경우
+        const dataFromServer = `[{"name": "홍길동", "korean": 80, "math": 90, "english": 90},{"name": "고길동", "korean": 90, "math": 80, "english": 80},{"name": "신길동", "korean": 70, "math": 80, "english": 70}]`;
+        console.log('서버로부터 받아온 데이터가 문자열 형태인 경우')
+        console.log(dataFromServer);
+
+
+        console.log('JSON 형식으로 변경');
+        let scores = JSON.parse(dataFromServer);
         console.log(scores);
-
-
+     
+       
         // 헤더(타이틀)를 출력
         console.log(`--------\t----\t----\t----\t----\t----`);
         console.log(`학생이름\t국어\t영어\t수학\t합계\t평균`);
