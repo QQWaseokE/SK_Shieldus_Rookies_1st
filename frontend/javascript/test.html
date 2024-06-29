@@ -6,122 +6,64 @@
     
 </head>
 <body>
-    <h1>전개 연산자</h1>
+    <h1>비구조화</h1>
     <script>
-        // Math.max() 매개변수로 전달된 값 중에서 가장 큰 값을 반환
-        console.log(Math.max(10, 2, 1, 20, 35, 7));     // 35
-        console.log(Math.max([10, 2, 1, 20, 35, 7]));   // NaN
+        // [ 비구조화 ] = [ 배열 ]
+        // 배열 비구조화 : 배열 데이터를 변수에 넣는 것 => '배열의 특성 : 순서'가 존재 vs 객체 : 순서가 없음, 키(속서의 이름)로 구별
+        const arr = [ 1, 2, 3, 4, 5 ];
+        let a = arr[0];
+        let b = arr[1];
+        console.log(a, b);          // 1 2
 
-        // 숫자 배열에서 가장 큰 값을 추출하려고 하면, ...
-        const numbers = [10, 2, 1, 20, 35, 7];
-        console.log(Math.max(numbers));                 // NaN
-        console.log(Math.max(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4], numbers[5]));
-        console.log(Math.max(...numbers));              // 배열의 경우 => 배열 요소를 나열
+        // c, d, e, f 변수에 arr 배열의 첫번째 값부터 차례로 할당
+        let [c, d, e, f] = arr;
+        console.log(c, d, e, f);    // 1 2 3 4
+        console.log({c, d, e, f});  // {c: 1, d: 2, e: 3, f: 4}
+    
+        // 두 변수의 값을 교환
+        let x = 10;
+        let y = 20;
+        console.log({x, y});        // {x: 10, y: 20}
 
-        // 사용 예 1. 배열의 값을 복사
-        let a1 = 10;
-        let a2 = a1;
-        console.log(a1, a2);        // 10 10
-        a1 = 20;
-        console.log(a1, a2);        // 20 10
+        // 임시 변수를 이용하는 방법
+        let temp = x;
+        x = y;
+        y = temp;
+        console.log({x, y});        // {x: 20, y: 10}
 
-        let arr1 = [ 1, 2, 3 ];
-        let arr2 = arr1;            // 배열 변수를 할당하면 배열 데이터 주소를 공유
-        console.log(arr1, arr2);    // [1, 2, 3] [1, 2, 3]
-        arr1[1] = 20;
-        console.log(arr1, arr2);    // [1, 20, 3] [1, 20, 3]
+        // 배열 비구조화를 이용하는 방법
+        [ y, x ] = [ x, y ];
+        console.log({x, y});        // {x: 10, y: 20}
 
-        // 위의 문제(주소 공유)를 해결하기 위해서는 배열의 주소가 아닌 배열의 값을 복사하는 것이 필요 
-        // 루프를 이용해서 값을 하나씩 복사
-        let arr3 = [ 1, 2, 3 ];
-        let arr4 = [];
-        for (let i = 0; i < arr3.length; i++) {
-            arr4[i] = arr3[i];
-        }
-        console.log(arr3, arr4);    // [1, 2, 3] [1, 2, 3]
-        arr3[1] = 20;
-        console.log(arr3, arr4);    // [1, 20, 3] [1, 2, 3]
 
-        // 전개 연산자를 이용해서 배열의 값을 복사
-        let arr5 = [ 1, 2, 3 ];
-        let arr6 = [ ...arr5 ];
-        console.log(arr5, arr6);    // [1, 2, 3] [1, 2, 3]
-        arr5[1] = 20;
-        console.log(arr5, arr6);    // [1, 20, 3] [1, 2, 3]
+        // 배열의 크기 보다 변수의 개수가 많은 경우
+        const arr2 = [ 1, 2 ];
+        let [ a1, b1, c1 ] = arr2;
+        console.log({a1, b1, c1});  // {a1: 1, b1: 2, c1: undefined}
+
+        // 기본값 설정이 가능
+        let [ a2, b2=20, c2=30 ] = arr2;
+        console.log({a2, b2, c2});  // {a1: 1, b1: 2, c1: 30}
 
 
 
-        // 사용 예 2. 객체의 값 복사
-        let obj1 = { name: '홍길동', age: 23 };
-        let obj2 = obj1;            // 두 객체 변수가 객체 데이터 주소를 공유
-        console.log(obj1, obj2);    // {name: '홍길동', age: 23} {name: '홍길동', age: 23}
-        obj1.age = 32;
-        console.log(obj1, obj2);    // {name: '홍길동', age: 32} {name: '홍길동', age: 32}
+        // 배열의 일부분의 값을 변수에 할당할 경우 => 할당하지 않을 자리는 비워둠
+        const arr3 = [ 1, 2, 3 ];
+        let a3 = 10, b3 = 20, c3 = 30;
+        console.log({a3, b3, c3});  // {a3: 10, b3: 20, c3: 30}
 
-        // 객체 데이터를 복사하는 방식으로 변경
-        // 루프를 이용해서 값을 하나씩 복사
-        let obj3 = { name: '고길동', age: 43 };
-        let obj4 = {};
-        for (key in obj3) {
-            obj4[key] = obj3[key];
-        }
-        console.log(obj3, obj4);    // {name: '고길동', age: 43} {name: '고길동', age: 43}
-        obj3.age = 99;
-        console.log(obj3, obj4);    // {name: '고길동', age: 99} {name: '고길동', age: 43}
-
-        // 전개 연산자를 이용한 객체 값 복사
-        let obj5 = { name: '신길동', age: 53 };
-        let obj6 = { ...obj5 };
-        console.log(obj5, obj6);    // {name: '신길동', age: 53} {name: '신길동', age: 53}
-        obj5.age = 99;
-        console.log(obj5, obj6);    // {name: '신길동', age: 99} {name: '신길동', age: 53}
-
-        // 사용 예 3. 객체를 복사하는 과정에서 새로운 속성을 추가하거나 속성의 값을 변경하는 경우
-        // 객체 속성을 추가하고 값을 변경
-        let obj7 = { name: '홍길동', age: 23 };
-        obj7.color = ['red', 'blue'];
-        obj7.age = 32;
-        console.log(obj7)
-
-        // obj7과 동일한 속성을 가지는 obj8을 정의하고, name 속성의 값을 'honggildong'으로 변경
-        /*
-        let obj8 = { ...obj7 };
-        obj8.name = 'honggildong';
-        */
-        let obj8 = { ...obj7, name: 'honggildong' };
-        console.log(obj8);
-
-        // obj7과 동일한 속성을 가지는 obj9를 정의하고, email 속성을 추가 
-        /*
-        let obj9 = { ...obj7 };
-        obj9.email = 'hong@test.com';
-        */
-        let obj9 = { ...obj7, email: 'hong@test.com' };
-        console.log(obj9);
-        
+        // 변수 a3에 arr3의 첫번째 값(1)을, 변수 c3에 arr3의 세번째 값(3)을 할당하고 변수 b3는 20을 그대로 유지
+        [ a3 , , c3 ] = arr3;
+        console.log({a3, b3, c3});  // {a3: 1, b3: 20, c3: 3}
 
 
-        // 사용 예 4. 배열 또는 객체를 결합할 때
-        // 배열을 결합
-        const nos1 = [1, 2, 3];
-        const nos2 = [7, 8, 9];
+        // 배열의 값을 변수에 할당하고 남은 나머지를 새로운 배열로 만드는 경우 
+        const arr4 = [ 1, 2, 3, 4, 5 ];
 
-        const nos3 = [...nos1, ...nos2];
-        console.log(nos3);                  // [1, 2, 3, 7, 8, 9]
-
-        const nos4 = [...nos2, ...nos1];
-        console.log(nos4);                  // [7, 8, 9, 1, 2, 3]
-
-
-        // 객체를 결합
-        const man1 = { age: 21, name: 'hong' };
-        const man2 = { hobby: 'soccer', age: 40 };
-
-        const man3 = { ...man1, ...man2 };
-        console.log(man3);                  // {age: 40, name: 'hong', hobby: 'soccer'}, 속성 이름이 겹칠 때는 뒤에 값
-
-        const man4 = { ...man2, ...man1 };
-        console.log(man4);                  // {hobby: 'soccer', age: 21, name: 'hong'}, 속성 이름이 겹칠 때는 뒤에 값
+        // arr 배열의 첫번째 값을 first 배열에 넣고, 나머지 값을 rest라는 이름의 배열에 추가 
+        const [ first, ...rest ] = arr4;
+        console.log(first);         // 1
+        console.log(rest);          // [2, 3, 4, 5]
 
     </script>
 </body>
