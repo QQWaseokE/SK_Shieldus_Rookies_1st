@@ -1,20 +1,25 @@
 <!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <style>
         div[class^="box"] { box-sizing: border-box; }
         .box1, .box2, .box3 {
             height: 100px;
             border: 3px solid blue; background: aliceblue;
         }
+        @media screen and (min-width:768px) {		
+            .box2 { float: left; width: 70%; }		   
+            .box3 { float: left; width: 30%; }
+            .boxA:after { content: ''; display: block; clear: both; }
+        }        
     </style>
 </head>
 <body>
     <div class="box1">BOX1</div>
-    <div class="boxA">			                
-        <div class="box2">BOX2</div>		   
+    <div class="boxA">
+        <div class="box2">BOX2</div>
         <div class="box3">BOX3</div>
     </div>
 </body>
