@@ -5,9 +5,13 @@ import MyComponentFunction from './MyComponentFunction';
 function App() {
   return (
     <>
-      <MyComponentClass name="신길동" />
+      <MyComponentClass>
+        <i>어떤 내용</i>
+      </MyComponentClass>
       <hr/>
-      <MyComponentFunction />
+      <MyComponentFunction>
+        <i>또 어떤 내용</i>
+      </MyComponentFunction>
     </>
   );  
 }
