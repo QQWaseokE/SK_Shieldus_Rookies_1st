@@ -5,9 +5,9 @@ import MyComponentFunction from './MyComponentFunction';
 function App() {
   return (
     <>
-      <MyComponentClass />
-      <hr/> 
-      <MyComponentFunction />
+      <MyComponentClass name="신길동" />
+      <hr/>
+      <MyComponentFunction name="고길동" />
     </>
   );  
 }
