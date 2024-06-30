@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div>			⇐ 루트 요소(element)를 추가
+    <Fragment>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -21,7 +22,7 @@ function App() {
         </header>
       </div>
       <h1>리액트 앱</h1>
-    </div>
+    </Fragment>
   );
 }
 
