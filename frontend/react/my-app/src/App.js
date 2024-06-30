@@ -2,16 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 // import { Fragment } from 'react';
 
-function Name() {
-  const name = undefined;
-
-  return name || 'undefined 입니다.';	
-}
-
 function App() {
+  const name = '홍길동';
   return (
     <>
-      <Name />
+      <div style={{backgroundColor: 'black', color: 'yellow', fontSize: 48, padding: '16px'}}>
+        {name}
+      </div>
     </>
   );
 }
