@@ -7,4 +7,11 @@ function MyComponentFunction({name, age, nickname}) {
         </>
     );
 }
+
+MyComponentFunction.defaultProps = {
+    name: '아무개', 
+    age: 0, 
+    nickname: '없음'
+};
+
 export default MyComponentFunction;
