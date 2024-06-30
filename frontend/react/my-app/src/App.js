@@ -7,6 +7,8 @@ function App() {
     <>
       <MyComponentClass>
         <i>어떤 내용</i>
+        <i>\n</i>
+        <i>또 어떤 내용</i>
       </MyComponentClass>
       <hr/>
       <MyComponentFunction>
