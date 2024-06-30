@@ -5,54 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-    <h1>map() 함수</h1>
+    <h1>filter() 메소드</h1>
     <script>
-        const source = [ 1, 4, 8, 16 ];
+        const words = [ 'Visit', 'BBC', 'for', 'trusted', 'reporting', 'business', 'climate', 'innovation' ];
 
-        // source 배열의 값을 두 배수한 결과 배열(twoTimes)을 만들어서 출력하시오. 
+        // 여섯 글자 이상인 단어만 추출해서 출력
         {
-            const twoTimes = [];
-            for (let i = 0; i < source.length; i ++) {
-                twoTimes[i] = source[i] * 2;
+            const newWords = [];
+            for (let i = 0; i < words.length; i ++) {
+                if (words[i].length > 6)
+                    newWords.push(words[i]);
             }
-            console.log(twoTimes);      // [2, 8, 16, 32]
-        }
-        {   
-            const twoTimes = source.map(value => value * 2);
-            console.log(twoTimes);
+            console.log(newWords);      // ['trusted', 'reporting', 'business', 'climate', 'innovation']
         }
         {
-            const callback = value => value * 2;
-            const twoTimes = source.map(callback);
-            console.log(twoTimes);
+            const checker = function(v) { return v.length > 6; }
+            const newWords = words.filter(checker);     // filter는 Boolean으로 판별
+            console.log(newWords);
         }
         {
-            const callback = function(value) {
-                return value * 2;
-            };
-            const twoTimes = source.map(callback);
-            console.log(twoTimes);
+            const checker = v => v.length > 6;          // const checker = function(v) { return v.length > 6 } <= true, false로 return
+            const newWords = words.filter(checker);     
+            console.log(newWords);
         }
         {
-            function callback(value) {
-                return value * 2;
-            }
-            const twoTimes = source.map(callback);
-            console.log(twoTimes);
+            const newWords = words.filter(v => v.length > 6);
+            console.log(newWords);
+        }
+        {
+            function checker(v) { return v.length > 6; }
+            const newWords = words.filter(checker);
+            console.log(newWords);
         }
 
-        // map 함수 연결
+        // 글자 길이가 짝수인 단어만 추출해서 출력
         {
-            const plusTwo = v => v + 2;
-            const tenTimes = v => v * 10;
-
-            // source 배열의 값에 2를 더한 결과를 10배수해서 출력
-            const result1 = source.map(plusTwo).map(tenTimes);   
-            console.log(result1);            // [30, 60, 100, 180]
-        
-            // source 배열의 값을 10배수한 결과에 2를 더한 결과를 출력
-            const result2 = source.map(tenTimes).map(plusTwo);   
-            console.log(result2);            // [12, 42, 82, 162]
+            console.log(words.filter(v => v.length % 2 == 0));  // ['business', 'innovation']
         }
     </script>
 </body>
