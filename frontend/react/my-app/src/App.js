@@ -1,15 +1,12 @@
 import './App.css';
+import MyComponentClass from './MyComponentClass';
 
 function App() {
-  const name = '홍길동';
   return (
     <>
-      <div className="react">
-        {name}
-      </div>
-      <input type="text"/>
-    </>				   
-  );
+      <MyComponentClass />
+    </>
+  );  
 }
 
 export default App;
