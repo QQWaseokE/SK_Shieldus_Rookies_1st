@@ -7,6 +7,7 @@ function App() {
       <div className="react">
         {name}
       </div>
+      <input type="text"/>
     </>				   
   );
 }
