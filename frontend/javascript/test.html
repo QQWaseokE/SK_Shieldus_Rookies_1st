@@ -7,45 +7,24 @@
 <body>
     <h1>객체 비구조화</h1>
     <script>
-        // 객체 비구조화를 할 때는 객체의 속성명(key)이 중요
-        const obj1 = { name: 'mike', age: 21 };
-        const obj2 = { name: 'john', age: 40, grade: "A" };
+        function print(obj) {
+            console.log("#1", `${obj.name} ${obj.age} ${obj.email}`);
 
-        // ojb1의 age와 name 속성의 값을 age와 name 변수에 할당             
-        {
-            const age = obj1.age;
-            const name = obj1.name;
-            console.log({age, name});           // {age: 21, name: 'mike'}
-        }
-        {
-            const {age, name} = obj1;
-            console.log({age, name});           // {age: 21, name: 'mike'}
-        }
-        {
-            const {newAge, newName} = obj1;
-            console.log({newAge, newName});     // {newAge: undefined, newName: undefined}
-            console.log(obj1.newAge);           // undefined
+            const {name, age, email} = obj;
+            console.log("#2", `${name} ${age} ${email}`);
         }
 
-        // 객체 비구조화를 통해 가져온 값을 새로운 변수 이름으로 사용할 경우 => 별칭을 부여 
-        {
-            const {age: newAge, name: newName} = obj1;
-            console.log({newAge, newName});     // {newAge: 21, newName: 'mike'}
+        function print2({name, age, email}) {
+            console.log("#3", `${name} ${age} ${email}`);
         }
 
-        // 객체에 존재하지 않는 요소를 변수에 할당할 때 적용할 기본값 설정도 가능 
-        {
-            const {age, name: newName, email='default'} = obj1;
-            console.log({age, newName, email}); // {age: 21, newName: 'mike', email: 'default'}
-        }
-
-        // 객체 비구조화 시 객체의 일부 속성을 변수에 할당하고, 나머지를 새로운 객체로 저장 
-        {
-            // obj2의 age 속성의 값을 johnAge 변수에 할당하고, 나머지를 rest라는 이름의 객체에 할당
-            const {age: johnAge, ...rest} = obj2;
-            console.log({johnAge});             // {johnAge: 40}
-            console.log(rest);                  // {name: 'john', grade: 'A'}            
-        }
+        const person = { 
+            name: '홍길동', 
+            age: 23, 
+            email: 'hong@test.com'
+        };
+        print(person);
+        print2(person);
     </script>
 </body>
 </html>
