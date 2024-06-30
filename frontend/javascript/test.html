@@ -1,54 +1,64 @@
 <!doctype html>
 <html lang="ko">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+   
 </head>
-
 <body>
-    <h1>reduce() 메소드</h1>
+    <h1>객체와 배열을 이용한 데이터 처리</h1>
     <script>
-        // 리듀스 함수는 배열의 요소를 순차적으로 순회하며 숫자든 배열이든 객체든 하나의 값으로 줄여 return 하는 함수
-        // 즉, 배열을 기반으로 하나의 값을 도출할 때 사용
-        
-        const numbers = [1, 2, 3, 4, 5];
+        // 서버와 통신을 통해서 데이터를 가져오는 경우
+        const dataFromServer = `[{"name": "홍길동", "korean": 80, "math": 90, "english": 90},{"name": "고길동", "korean": 90, "math": 80, "english": 80},{"name": "신길동", "korean": 70, "math": 80, "english": 70}]`;
+        console.log('서버로부터 받아온 데이터가 문자열 형태인 경우')
+        console.log(dataFromServer);
 
-        // 배열 데이터의 합
-        {
-            let sum = 0;
-            for (let i = 0; i < numbers.length; i++)
-                sum = sum + numbers[i];
-            console.log(sum);           // 15
-        }
-        {
-            let sum = numbers.reduce((a, c) => a + c, 0);
-            console.log(sum);
-        }
-            // 합 과정
-        {
-            let sum = numbers.reduce((a, c) => {
-                console.log({ a, c });
-                return a + c;
-            });
-            console.log(sum);
-        }
 
-        // numbers 배열의 각 항목의 값에 13을 곱한 결과 중 짝수의 합을 구하시오. 
-        {
-            const f1 = n => n * 13;
-            const f2 = n => n % 2 === 0;
-            const f3 = (a, c) => a + c;
 
-            console.log(numbers.map(f1).filter(f2).reduce(f3));
-        }
-        {
-            console.log(numbers
-                .map(v => v * 13)
-                .filter(v => v % 2 === 0) 
-                .reduce((a, c) => a + c, 0));
-        }
+
+        console.log('JSON 형식으로 변경');
+        let scores = JSON.parse(dataFromServer);
+        console.log(scores);
+     
+       
+        // 헤더(타이틀)를 출력
+        console.log(`--------\t----\t----\t----\t----\t----`);
+        console.log(`학생이름\t국어\t영어\t수학\t합계\t평균`);
+        console.log(`--------\t----\t----\t----\t----\t----`);
+
+
+
+
+        // 학생별 점수를 출력
+        scores.forEach(score => {
+            // 합계와 평균을 구하는 함수를 학생 객체 추가
+            score.total = function() {
+                return this.korean + this.english + this.math;
+            };
+            score.average = function() {
+                let result = this.total() / 3;
+                // 소수점 둘째 자리에서 반올림해서 반환
+                return Math.round(result * 10) / 10;
+            };
+
+            // 학생 객체의 내용(이름, 과목별 점수)을 출력
+            console.log(`${score.name}\t\t${score.korean}\t\t${score.english}\t\t${score.math}\t\t${score.total()}\t\t${score.average()}`);
+        });
+
+
+        const ksum = scores.map(score => score.korean).reduce((a, c) => a + c, 0);
+        const esum = scores.map(score => score.english).reduce((a, c) => a + c, 0);
+        const msum = scores.map(score => score.math).reduce((a, c) => a + c, 0);
+
+
+        const sum = subject => scores.map(score => score[subject]).reduce((a, c) => a + c, 0);
+
+
+        // 풋터 출력
+        console.log(`--------\t----\t----\t----\t----\t----`);
+        console.log(`합계\t\t${ksum}\t\t${esum}\t\t${msum}`);
+        console.log(`합계\t\t${sum('korean')}\t\t${sum('english')}\t\t${sum('math')}`);
+        console.log(`--------\t----\t----\t----\t----\t----`);
     </script>
 </body>
 </html>
