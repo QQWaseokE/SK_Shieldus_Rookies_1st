@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 
 function App() {
   return (
-    <Fragment>
+    <>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -22,7 +22,7 @@ function App() {
         </header>
       </div>
       <h1>리액트 앱</h1>
-    </Fragment>
+    </>
   );
 }
 
