@@ -4,23 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
+    
     <!-- 실행에 필요한 JavaScript 라이브러를 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- 내부 스타일을 정의 -->
+    <style>
+        img { width: 100px; }
+        p { display: inline; }
+    </style>
 </head>
 <body>
     <h1>국기 정보를 가져와서 국가와 국기 이미지를 출력하는 프로그램을 작성</h1>
+    
+    <input type="text" placeholder="검색할 국가명을 입력하세요." />
+
+    <ul></ul>
 
     <script>
+        let datas = [];
+
+        const showFlagAndNation = (datas) => {
+            $('ul').empty();
+            !!datas && datas.forEach(nf => {
+                const li = `
+                    <li>
+                        <img src="${nf.flags.png}" alt="${nf.flags.alt}"/>
+                        <p>${nf.name.common} (${nf.name.official})</p>
+                    </li>
+                `;
+                $('ul').append(li);
+            });
+        };
+
         // axios를 이용해서 국가 및 국기 데이터를 가져옴
         axios.get('https://restcountries.com/v3.1/all?fields=name,flags')
         .then(res => {
-            console.log(res);
+            datas = res.data;
+            showFlagAndNation(datas);
         })
         .catch(err => {
             console.log(err);
         });
+
+        $('input').on('keyup', e => {
+            const inputText = $(e.currentTarget).val().toLowerCase();
+            showFlagAndNation(datas.filter(data => data.name.official.toLowerCase().indexOf(inputText) >= 0));
+        });    
     </script>
 </body>
 </html>
