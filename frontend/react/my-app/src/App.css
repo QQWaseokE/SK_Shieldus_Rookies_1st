@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.react {
+  background-color: black;
+  color: yellow;
+  font-size: 48px;
+  padding: 16px;
+}
