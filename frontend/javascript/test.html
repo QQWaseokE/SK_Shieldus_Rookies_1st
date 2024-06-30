@@ -5,26 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-    <h1>객체 비구조화</h1>
+    <h1>map() 함수</h1>
     <script>
-        function print(obj) {
-            console.log("#1", `${obj.name} ${obj.age} ${obj.email}`);
+        const source = [ 1, 4, 8, 16 ];
 
-            const {name, age, email} = obj;
-            console.log("#2", `${name} ${age} ${email}`);
+        // source 배열의 값을 두 배수한 결과 배열(twoTimes)을 만들어서 출력하시오. 
+        {
+            const twoTimes = [];
+            for (let i = 0; i < source.length; i ++) {
+                twoTimes[i] = source[i] * 2;
+            }
+            console.log(twoTimes);      // [2, 8, 16, 32]
+        }
+        {   
+            const twoTimes = source.map(value => value * 2);
+            console.log(twoTimes);
+        }
+        {
+            const callback = value => value * 2;
+            const twoTimes = source.map(callback);
+            console.log(twoTimes);
+        }
+        {
+            const callback = function(value) {
+                return value * 2;
+            };
+            const twoTimes = source.map(callback);
+            console.log(twoTimes);
+        }
+        {
+            function callback(value) {
+                return value * 2;
+            }
+            const twoTimes = source.map(callback);
+            console.log(twoTimes);
         }
 
-        function print2({name, age, email}) {
-            console.log("#3", `${name} ${age} ${email}`);
-        }
+        // map 함수 연결
+        {
+            const plusTwo = v => v + 2;
+            const tenTimes = v => v * 10;
 
-        const person = { 
-            name: '홍길동', 
-            age: 23, 
-            email: 'hong@test.com'
-        };
-        print(person);
-        print2(person);
+            // source 배열의 값에 2를 더한 결과를 10배수해서 출력
+            const result1 = source.map(plusTwo).map(tenTimes);   
+            console.log(result1);            // [30, 60, 100, 180]
+        
+            // source 배열의 값을 10배수한 결과에 2를 더한 결과를 출력
+            const result2 = source.map(tenTimes).map(plusTwo);   
+            console.log(result2);            // [12, 42, 82, 162]
+        }
     </script>
 </body>
 </html>
