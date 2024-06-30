@@ -3,13 +3,11 @@ import './App.css';
 // import { Fragment } from 'react';
 
 function App() {
-  const name = '홍길동';
-  const number = 2;
+  const name = '홍길동x';
 
   return (
     <>
-      <h1>안녕, {name}</h1>   
-      <h2>{number + 2}</h2>
+      { name === '홍길동' ? '환영합니다.' : '환영하지 않습니다.' }
     </>
   );
 }
