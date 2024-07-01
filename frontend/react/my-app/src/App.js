@@ -1,11 +1,10 @@
 import './App.css';
-import CommentList from './comment/CommentList';
+import Counter from './Counter';
 
 function App() {
-  
   return (
     <>
-      <CommentList />      
+      <Counter />
     </>
   );  
 }
