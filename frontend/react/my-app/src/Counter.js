@@ -2,25 +2,27 @@ import { Component } from "react";
 
 class Counter extends Component {
     state = {
-        number: 0,           // 상태 변수 number를 초기화
+        number: 0, 
         fixedNumber: 10
     };
 
-
     render() {
-        const { number, fixedNumber } = this.state // 객체 비구조화
+        const { number, fixedNumber } = this.state;  // 객체 비구조화
         return (
-            <>
-                {/* 상태 변수를 참조 */}
-                <h1>{number}</h1>
-                {/* 버튼의 동작을 기술 */}
-                <button onClick={() => { this.setState({ number: number + 1 }) }}>하나 더하기</button>
+            <>                  
+                <h1>{number}</h1>    
                 <button onClick={() => {
-                    this.setState(prevState => ({ number: prevState.number + 1 }));
-                    this.setState(prevState => ({ number: prevState.number + 1 }));
-                    this.setState(prevState => ({ number: prevState.number + 1 }));
-                    this.setState(prevState => ({ number: prevState.number + 1 }));
-                    this.setState(prevState => ({ number: prevState.number + 1 }));
+                    // 상태 변수 변경 후 변경 내용을 로그로 기록
+                    console.log('변경전', number);
+                    this.setState({ number: number + 1 }, () => console.log('변경후', this.state.number));         
+                    // console.log('변경후', number);           
+                }}>하나 더하기</button>
+                <button onClick={() => {
+                    this.setState( prevState => ({ number: prevState.number + 1 }), () => console.log('변경후', this.state.number));
+                    this.setState( prevState => ({ number: prevState.number + 1 }) );
+                    this.setState( prevState => ({ number: prevState.number + 1 }) );
+                    this.setState( prevState => ({ number: prevState.number + 1 }) );
+                    this.setState( prevState => ({ number: prevState.number + 1 }) );
                 }}>다섯 더하기</button>
                 <h1>{fixedNumber}</h1>
             </>
