@@ -1,15 +1,15 @@
-function Lamp({ size, color }) {
+function Lamp({size, color}) {
     return (
-        <div style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: color }} />
+        <div style={{ width: size, height: size, borderRadius: size/2, backgroundColor: color }} />
     );
 }
 
-function TrafficLight({ size }) {
+function TrafficLight({size, colors}) {
     return (
         <>
-            <Lamp size={size} color='red' />
-            <Lamp size={size} color='green' />
-            <Lamp size={size} color='yellow' />
+            {
+                colors.map(color => <Lamp size={size} color={color} />)
+            }
         </>
     );
 }
