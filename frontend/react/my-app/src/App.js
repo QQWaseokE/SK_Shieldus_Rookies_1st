@@ -3,17 +3,30 @@ import MyComponentClass from './MyComponentClass';
 import MyComponentFunction from './MyComponentFunction';
 
 function App() {
+
+  const datas = [
+    { name: '홍길동', age: 23, nickname: '호부호형을 원하는 자' }, 
+    { name: '고길동', age: 40, nickname: '둘리가 싫은 자' }, 
+    { name: '신길동', age: 50, nickname: '매운 짬뽕' }, 
+  ];
+
   return (
     <>
-      <MyComponentClass>
-        <i>어떤 내용</i>
-        <i>\n</i>
-        <i>또 어떤 내용</i>
-      </MyComponentClass>
+      {
+        datas.map(data => 
+          <MyComponentClass name={data.name} age={data.age} nickname={data.nickname}>
+            <i>어떤 내용 </i>
+          </MyComponentClass>
+        )
+      }
       <hr/>
-      <MyComponentFunction>
-        <i>또 어떤 내용</i>
-      </MyComponentFunction>
+      {
+        datas.map(data => 
+          <MyComponentFunction name={data.name} age={data.age} nickname={data.nickname}>
+            <i>또 어떤 내용 </i>
+          </MyComponentFunction>
+        )
+      }
     </>
   );  
 }

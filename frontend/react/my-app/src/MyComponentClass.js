@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
 
 class MyComponentClass extends Component { 
     render() {
@@ -16,9 +17,13 @@ class MyComponentClass extends Component {
 }
 
 MyComponentClass.defaultProps = {
-    name: '아무개', 
+    // name: '아무개', 
     age: 0, 
     nickname: '없음'
 };
+
+MyComponentClass.propTypes = {
+    name: PropTypes.string.isRequired
+};								 
 
 export default MyComponentClass;

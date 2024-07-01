@@ -1,4 +1,6 @@
-function MyComponentFunction({name, age, nickname, children}) {
+import PropTypes from 'prop-types';
+
+function MyComponentFunction({name = '아무개', age = 0, nickname = '없음', children}) {
     return (
         <>
             <h1>이름은 {name}입니다.</h1>
@@ -9,10 +11,8 @@ function MyComponentFunction({name, age, nickname, children}) {
     );
 }
 
-MyComponentFunction.defaultProps = {
-    name: '아무개', 
-    age: 0, 
-    nickname: '없음'
+MyComponentFunction.propTypes = {
+    name: PropTypes.string.isRequired
 };
 
 export default MyComponentFunction;
