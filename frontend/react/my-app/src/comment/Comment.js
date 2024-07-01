@@ -26,7 +26,7 @@ function Comment(props) {
             { /*작성한 사람의 이미지*/}
             <div>
                 <img style={styles.image}
-                    src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" />
+                    src={props.picture} />
             </div>
             { /*작성한 사람의 이름과 댓글 내용*/}
             <div style={styles.contentContainer}>
