@@ -30,8 +30,8 @@ function Comment(props) {
             </div>
             { /*작성한 사람의 이름과 댓글 내용*/}
             <div style={styles.contentContainer}>
-                <span style={styles.nameText}>작성자 이름</span>
-                <span style={styles.commentText}>댓글 내용</span>
+                <span style={styles.nameText}>{props.name}</span>
+                <span style={styles.commentText}>{props.comment}</span>
             </div>
         </div>
     );
