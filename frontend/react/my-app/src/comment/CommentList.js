@@ -2,42 +2,30 @@ import Comment from "./Comment";
 
 // 댓글 데이터
 const comments = [
-    { name: "홍길동", comment: "안녕하세요. 홍길동입니다.", picture: "https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-business-men-icon-png-image_4186858.jpg" },
-    { name: "고길동", comment: "안녕하세요. 고길동입니다.", picture: "https://png.pngtree.com/png-clipart/20190520/original/pngtree-male-worker-icon-graphic-png-image_3668949.jpg" },
-    { name: "신길동", comment: "안녕하세요. 신길동입니다.", picture: "https://png.pngtree.com/png-clipart/20190630/original/pngtree-vector-avatar-icon-png-image_4162757.jpg" },
+    { name: "홍길동", comment: "안녕하세요. 홍길동입니다." }, 
+    { name: "고길동", comment: "안녕하세요. 고길동입니다." },
+    { name: "신길동", comment: "안녕하세요. 신길동입니다." }, 
 ];
+
+// 사용자 데이터
+const users = [
+    { name: "홍길동", picture: "https://png.pngtree.com/png-clipart/20190705/original/pngtree-vector-business-men-icon-png-image_4186858.jpg" }, 
+    { name: "고길동", picture: "https://png.pngtree.com/png-clipart/20190520/original/pngtree-male-worker-icon-graphic-png-image_3668949.jpg" }, 
+    { name: "신길동", picture: "https://png.pngtree.com/png-clipart/20190630/original/pngtree-vector-avatar-icon-png-image_4162757.jpg" }, 
+];
+
+function getUser(name) {
+    return users.filter(u => u.name === name);
+}
 
 function CommentList(props) {
     return (
         <>
             <h1>모두 출력</h1>
-            {
-                comments.map((c, index) => <Comment name={c.name} comment={c.comment} key={index} picture={c.picture} />)
+            {   
+                comments.map((c, i) => <Comment name={c.name} comment={c.comment} key={i} picture={getUser(c.name)[0].picture} />)
             }
-            <hr />
-            <h1>이름이 홍길동인 경우에만 출력</h1>
-            {
-                // filter 사용
-                comments
-                    .filter(c => c.name === '홍길동')
-                    .map((c, i) => <Comment name={c.name} comment={c.comment} picture={c.picture} key={i} />)
-            }
-            <hr />
-             {
-                // && 연산자를 이용해서 조건부 렌더링
-                comments
-                .map((c, i) => {
-                    return c.name === '홍길동' && <Comment name={c.name} comment={c.comment} picture={c.picture} key={i} />
-                })
-            }
-            <hr />
-            {
-                // 삼항 연잔자를 사용하는 경우 
-                comments
-                .map((c, i) => {
-                    return c.name === '홍길동' ? <Comment name={c.name} comment={c.comment} picture={c.picture} key={i} /> : ""
-                })
-            }
+            
         </>
     );
 }
