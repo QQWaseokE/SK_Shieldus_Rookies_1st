@@ -7,9 +7,9 @@ function Lamp({ size, color }) {
 function TrafficLight({ size }) {
     return (
         <>
-            <div style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: 'red' }} />
-            <div style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: 'green' }} />
-            < div style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: 'yellow' }} />
+            <Lamp size={size} color='red' />
+            <Lamp size={size} color='green' />
+            <Lamp size={size} color='yellow' />
         </>
     );
 }
