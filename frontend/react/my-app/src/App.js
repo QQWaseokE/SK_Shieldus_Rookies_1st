@@ -1,10 +1,10 @@
-import ValidatePassword from "./ref/ValidatePassword";
+import ScrollBox from "./ref/ScrollBox";
 
 function App() {
 
   return (
     <>
-      <ValidatePassword />
+      <ScrollBox />
     </>
   );
 }
