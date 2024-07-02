@@ -11,10 +11,12 @@ const IterationSample = () => {
     const [inputText, setInputText] = useState('');
     const [nextId, setNextId] = useState(5);
 
+    const handlerChange = e => setInputText(e.target.value);
+
     const nameList = names.map(name => <li key={name.id}>{name.text}</li>);
     return (
         <>
-            <input type="text" value={inputText} />
+            <input type="text" value={inputText} onChange={handlerChange}/>
             <button>추가</button>
             <ul>{nameList}</ul>        
         </>
