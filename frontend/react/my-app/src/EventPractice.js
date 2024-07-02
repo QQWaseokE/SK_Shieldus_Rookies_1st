@@ -9,16 +9,22 @@ class EventPractice extends Component {
     handlerChange = e => this.setState({[e.target.name]: e.target.value});
 
 
-    handlerClick = () => this.setState({message: ""});
+    handlerClick = () => this.setState({message: "", username: ""});
+    handlerKeyUp = e => {
+        console.log(e);
+        if (e.key === 'Enter') {
+            this.handlerClick();
+        }
+    }
 
     render() {
         return (
             <>
                 <h1>이벤트 연습</h1>
                 <input type="text" name="message" placeholder="입력해 보세요." 
-                    value={this.state.message} onChange={this.handlerChange} />
+                    value={this.state.message} onChange={this.handlerChange} onKeyUp={this.handlerKeyUp}/>
                 <input type="text" name="username" placeholder="사용자 이름을 입력하세요."
-                    value={this.state.username} onChange={this.handlerChange}/>
+                    value={this.state.username} onChange={this.handlerChange} onKeyUp={this.handlerKeyUp}/>
                 <h2>입력 내용 » {this.state.message}</h2>
                 <h2>사용자 이름 » {this.state.username}</h2>
                 <button onClick={this.handlerClick}>확인</button>
